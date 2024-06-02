@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="center">
+        <div class="containerr">
+            <div class="heading">
+                <h2>JavaScript Assignment   </h2>
+            </div>
+            <div class="questions">
+                <ol>
+                    <li onclick="gotoque('q1')">Find the word SUV in the following sentence and print it on the document.</li>
+                    <li onclick="gotoque('q2')">Replace all occurrences of a word "the" with "a" in the paragraph below.</li>
+                    <li onclick="gotoque('q3')">Create an array of all the characters in the following string and display on the document on new line.</li>
+                    <li onclick="gotoque('q4')">Reverse the following string and display on the document.</li>
+                    <li onclick="gotoque('q5')">Read a name and display it in reverse format (palindrome)</li>
+                    <li onclick="gotoque('q6')">Return a random number between 0 and 10 and display on the document.</li>
+                    <li onclick="gotoque('q7')">Get current date from a system and add 30 days into it and display on the document.</li>
+                    <li onclick="gotoque('q8'); q8ans();">Convert the following array into a string and seperate each value with "-"</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="que" id="q1">
+        <div class="heading">
+            <h2>Find the word SUV in the following sentence and print it on the document.</h2>
+        </div>
+        <div class="num1">
+            <h4>Sentence: This is the best SUV in the class.</h4>
+        </div>
+        <div class="ans">
+            <label style="padding-left: 1.1%;" for="">Answer</label>
+            <input id="q1ans" type="text" disabled>
+        </div>
+        <div class="ans">
+            <button class="btn" onclick="q1ans()">Check Answer</button>
+        </div>
+    </div>
+    <div class="que" id="q2">
+        <div class="heading">
+            <h2>Replace all occurrences of a word "the" with "a" in the paragraph below</h2>
+        </div>
+        <div class="num1">
+            <h4 id="q2sentence">Sentence: In the real world, people often overlook the importance of having a place to store all their stuff.</h4>
+        </div>
+        <div class="ans" >
+            <label style="padding-left: 1.1%;" for="">Answer</label>
+            <input style="width: 60vw;" id="q2ans" type="text" disabled>
+        </div>
+        <div class="ans">
+            <button class="btn" onclick="q2ans()">Replace "the" with "a"</button>
+        </div>
+    </div>
+    <div class="que" id="q3">
+        <div class="heading">
+            <h2>Create an array of all the characters in the following string and display on the document on new line</h2>
+        </div>
+        <div class="num1">
+            <h4>Sentence: <h4 id="q3sentence">Hello World</h4></h4>
+        </div>
+        <div style="flex-direction: column;" class="ans">
+            <h4 style="text-align: center;">characters:</h4>
+            <div>
+                <ol id="q3ol">
+                </ol>
+            </div>
+        </div>
+        <div class="ans">
+            <button class="btn" onclick="q3ans()">Display characters</button>
+        </div>
+    </div>
+    <div class="que" id="q4">
+        <div class="heading">
+            <h2>Reverse the following string and display on the document.</h2>
+        </div>
+        <div class="num1">
+            <h4>String: <h4 id="q4string">country</h4></h4>
+        </div>
+        <div class="ans">
+            <label style="padding-left: 1.1%;" for="">Answer</label>
+            <input id="q4ans" type="text" disabled>
+        </div>
+        <div class="ans">
+            <button class="btn" onclick="q4ans()">Reverse the string</button>
+        </div>
+    </div>
+    <div class="que" id="q5">
+        <div class="heading">
+            <h2>Read a name and display it in reverse format (palindrome).</h2>
+        </div>
+        <div class="num1">
+            <label for="">Name</label>
+            <input  id="q5name" type="text" onkeyup="q5ans()">
+        </div>
+        <div style="flex-direction: column;" class="ans">
+            <div class="ans">
+                <label for="">Answer</label>
+                <input id="q5ans" type="text" disabled>
+            </div>
+            <div style="width: 24rem;">
+                Is a name palindrome?
+                <input id="q5ansyes" type="radio" disabled>
+                <label for="">Yes</label>
+                <input id="q5ansno" type="radio" disabled>
+                <label for="">No</label>
+            </div>
+        </div>
+    </div>
+    <div class="que" id="q6">
+        <div class="heading">
+            <h2>Return a random number between 0 and 10 and display on the document.</h2>
+        </div>
+        <div class="ans">
+            <label style="padding-left: 1.1%;" for="">Answer</label>
+            <input id="q6ans" type="text" disabled>
+        </div>
+        <div class="ans">
+            <button class="btn" onclick="q6ans()">Generate number</button>
+        </div>
+    </div>
+    <div class="que" id="q7">
+        <div class="heading">
+            <h2>Get current date from a system and add 30 days into it and display on the document.</h2>
+        </div>
+        <div class="num1" >
+            <button class="btn" style="width: 15%;" onclick="q7ans()">Get date after 30 day</button>
+        </div>
+        <div class="ans">
+            <h5 id="q7ans"></h5>
+        </div>
+    </div>
+    <div class="que" id="q8">
+        <div class="heading">
+            <h2>Convert the following array into a string and seperate each value with "-"</h2>
+        </div>
+        <div>
+            <ol id="q8ol">
+            </ol>
+        </div>
+        <div class="ans">
+            <label style="padding-left: 1.1%;" for="">Answer</label>
+            <input style="width: 20%;" id="q8ans" type="text" disabled>
+        </div>
+        <div class="num1" >
+            <button class="btn" style="width: 15%;" onclick="q8ansCalc()">Join the cities</button>
+        </div>
+    </div>
+    <div class="backtoque">
+        <button class="btn" onclick="backtoque()">Back to Questions</button>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
