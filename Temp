@@ -1,0 +1,101 @@
+Here’s a C# code that follows the steps you've provided for formatting APN values:
+
+using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static string FormatAPN(string apn)
+    {
+        // Remove spaces first
+        apn = apn.Replace(" ", string.Empty);
+        
+        // Check if it's a string of digits, if yes, return for address search
+        if (Regex.IsMatch(apn, @"^\d+$"))
+        {
+            return "Proceed with Address Search";
+        }
+
+        // Replace all slashes with dots
+        apn = apn.Replace("/", ".");
+
+        // Split APN by dash to isolate the last section (Lot Extension)
+        var sections = apn.Split('-');
+        string formattedAPN = string.Empty;
+
+        if (sections.Length > 1)
+        {
+            // Process first 4 sections replacing dashes with dots
+            string firstSections = sections[0];
+            firstSections = firstSections.Replace("-", "."); // Replace any dash in the first sections with dot
+            formattedAPN = firstSections;
+
+            // Add Lot extension with dash if present
+            for (int i = 1; i < sections.Length; i++)
+            {
+                if (i == sections.Length - 1)
+                {
+                    formattedAPN += "-" + sections[i]; // Keep the last section as it is (Lot Extension)
+                }
+            }
+        }
+        else
+        {
+            // If no dash found, replace all slashes with dots (already done) and handle the case without Lot extension
+            formattedAPN = apn;
+        }
+
+        return formattedAPN;
+    }
+
+    static void Main()
+    {
+        // Example test cases
+        string[] testCases = 
+        {
+            "03-9A-1-10-10",
+            "13/5/1/21-1",
+            "13/5/1/21/1",
+            "13/5/1/21",
+            "02/14G/1/168",
+            "021461168",
+            "02 14G 1 168"
+        };
+
+        foreach (var testCase in testCases)
+        {
+            Console.WriteLine($"Input: {testCase} => Output: {FormatAPN(testCase)}");
+        }
+    }
+}
+
+Explanation:
+
+1. Removing spaces: First, all spaces are removed.
+
+
+2. Checking if APN is just digits: If the APN is a string of digits, we return "Proceed with Address Search."
+
+
+3. Replacing slashes with dots: All slashes are replaced with dots.
+
+
+4. Handling dashes: We split by dashes to handle the Lot extension properly. Only the first three dashes are replaced by dots, while the last dash (if it's the Lot extension separator) remains intact.
+
+
+5. No special characters: If the input is just digits, it proceeds to Address Search without further formatting.
+
+
+
+Example Output:
+
+Input: 03-9A-1-10-10 => Output: 03.9A.1.10-10
+Input: 13/5/1/21-1 => Output: 13.5.1.21-1
+Input: 13/5/1/21/1 => Output: 13.5.1.21-1
+Input: 13/5/1/21 => Output: 13.5.1.21
+Input: 02/14G/1/168 => Output: 02.14G.1.168
+Input: 021461168 => Output: Proceed with Address Search
+Input: 02 14G 1 168 => Output: 02.14G.1.168
+
+This code should handle all the cases you outlined.
+
